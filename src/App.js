@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -30,7 +29,13 @@ function App() {
       body: JSON.stringify(user)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+
+        // to show data on the client side
+        const newUsers = [...users, data];
+        setUsers(newUsers);
+      })
       .catch(err => console.log(err))
 
     console.log(user);
@@ -42,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>Name: {users.length}</h1>
+        <h1>Users: {users.length}</h1>
       </div>
       <form onSubmit={handleAddUser}>
         <input type="text" name='name' placeholder='name' required />
