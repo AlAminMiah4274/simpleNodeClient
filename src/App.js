@@ -11,6 +11,7 @@ function App() {
       .then(data => setUsers(data))
   }, []);
 
+  // to handle form 
   const handleAddUser = e => {
 
     // to prevent reloading of the form 
@@ -57,9 +58,10 @@ function App() {
         <button type="submit">Add User</button>
       </form>
 
+      {/* to show data on the client side coming from the server side */}
       <div>
         {
-          users.map(user => <p key={user.id}> {user.name} Email: {user.email}</p>)
+          users.map(user => <p key={user._id}> {user.name} Email: {user.email}</p>)
         }
       </div>
     </div>
